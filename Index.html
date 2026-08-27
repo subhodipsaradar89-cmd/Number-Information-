@@ -1282,7 +1282,7 @@ async function callAPI(number){
 
 
 /* ================================
-   রেজাল্ট দেখানো (নতুন ফিল্ড অনুযায়ী)
+   রেজাল্ট দেখানো (সঠিক JSON ফিল্ড অনুযায়ী)
 ================================ */
 
 function displayResults(data){
@@ -1341,11 +1341,11 @@ function displayResults(data){
     // প্রথম রেকর্ডটি নিন
     const info = results[0];
 
-    // যে ফিল্ডগুলো দেখাবো
+    // যে ফিল্ডগুলো দেখাবো (সঠিকভাবে ডাবল কোট ব্যবহার করা হয়েছে)
     const fields = [
         { key: 'num', label: '📱 Phone Number', css: 'accent' },
         { key: 'name', label: '👤 Full Name', css: 'accent' },
-        { key: 'fname', label: '👨 Father\\'s Name', css: '' },
+        { key: 'fname', label: "👨 Father's Name", css: '' },
         { key: 'aadhar', label: '🆔 Aadhaar Number', css: 'success' },
         { key: 'address', label: '📍 Address', css: '' },
         { key: 'circle', label: '📡 Network Circle', css: '' },
