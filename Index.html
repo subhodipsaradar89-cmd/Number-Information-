@@ -1,1092 +1,1647 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SUBHA-X-MD - NUMBER INFORMATION</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Noto Sans Devanagari', 'Segoe UI', Arial, sans-serif;
-            background: #f0f2f5;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            overflow-x: hidden;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            -webkit-touch-callout: none;
-        }
-        * {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            -webkit-touch-callout: none;
-        }
-        input, textarea {
-            -webkit-user-select: text;
-            -moz-user-select: text;
-            -ms-user-select: text;
-            user-select: text;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-        /* ===== DISCLAIMER POPUP ===== */
-        .disclaimer-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.88);
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(12px);
-        }
-        .disclaimer-overlay.hidden {
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.8s ease;
-        }
-        .disclaimer-overlay.hide-permanent {
-            display: none !important;
-        }
-        .disclaimer-box {
-            background: linear-gradient(145deg, #0a0a2a, #15154a);
-            border: 2px solid #FF9933;
-            border-radius: 24px;
-            padding: 45px 40px;
-            max-width: 520px;
-            width: 92%;
-            text-align: center;
-            box-shadow: 0 30px 80px rgba(0,0,0,0.6);
-            animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-        }
-        .disclaimer-box::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at center, rgba(255,153,51,0.05) 0%, transparent 70%);
-            animation: glowRotate 10s linear infinite;
-            pointer-events: none;
-        }
-        @keyframes glowRotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        @keyframes popIn {
-            0% { transform: scale(0.85) translateY(40px); opacity: 0; }
-            100% { transform: scale(1) translateY(0); opacity: 1; }
-        }
-        .disclaimer-box .icon-big { font-size: 60px; margin-bottom: 10px; display: block; }
-        .disclaimer-box .brand-name { color: #FF9933; font-size: 14px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; }
-        .disclaimer-box h2 { color: #FFFFFF; font-size: 24px; font-weight: 800; margin: 5px 0 10px; }
-        .disclaimer-box .divider { width: 60px; height: 2px; background: linear-gradient(90deg, transparent, #FF9933, transparent); margin: 10px auto; border-radius: 10px; }
-        .disclaimer-box .content { color: rgba(255,255,255,0.7); font-size: 14px; line-height: 1.9; margin-bottom: 20px; }
-        .disclaimer-box .content strong { color: #FF9933; }
-        .disclaimer-box .btn-accept {
-            padding: 14px 50px;
-            background: linear-gradient(135deg, #FF9933, #e68a00);
-            border: none;
-            border-radius: 50px;
-            color: #fff;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.3s;
-            font-family: 'Noto Sans Devanagari', 'Segoe UI', Arial, sans-serif;
-            position: relative;
-            overflow: hidden;
-        }
-        .disclaimer-box .btn-accept::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-            transition: left 0.5s ease;
-        }
-        .disclaimer-box .btn-accept:hover::before { left: 100%; }
-        .disclaimer-box .btn-accept:hover { transform: scale(1.05); box-shadow: 0 12px 40px rgba(255,153,51,0.4); }
-        .disclaimer-box .btn-accept i { margin-right: 10px; }
+<title>SUBHO•NΞT · Intelligence</title>
 
-        /* ===== TRICOLOR TOP BAR ===== */
-        .tricolor-bar { width: 100%; height: 6px; display: flex; position: fixed; top: 0; left: 0; z-index: 1000; }
-        .tricolor-bar .saffron { width: 33.33%; background: #FF9933; }
-        .tricolor-bar .white { width: 33.33%; background: #FFFFFF; }
-        .tricolor-bar .green { width: 33.34%; background: #138808; }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 
-        /* ===== TOP HEADER ===== */
-        .top-header {
-            width: 100%;
-            background: #0a0a2a;
-            padding: 10px 0;
-            margin-top: 6px;
-            border-bottom: 2px solid #FF9933;
-            position: sticky;
-            top: 6px;
-            z-index: 999;
-        }
-        .top-header .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .top-header .gov-text { color: #FF9933; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; }
-        .top-header .gov-text i { margin-right: 8px; color: #FFFFFF; }
-        .top-header .gov-text span { color: #FFFFFF; margin: 0 10px; }
-        .top-header .helpline {
-            color: #FFFFFF;
-            font-size: 12px;
-            font-weight: 500;
-            background: rgba(255,153,51,0.1);
-            padding: 4px 16px;
-            border-radius: 20px;
-            border: 1px solid rgba(255,153,51,0.15);
-        }
-        .top-header .helpline i { color: #FF9933; margin-right: 8px; }
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-        /* ===== MAIN HEADER ===== */
-        .main-header {
-            width: 100%;
-            background: linear-gradient(135deg, #0a0a2a 0%, #1a1a5a 50%, #0a0a2a 100%);
-            padding: 20px 0;
-            border-bottom: 3px solid #138808;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-        }
-        .main-header .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        .main-header .logo-section { display: flex; align-items: center; gap: 18px; }
-        .main-header .logo-img {
-            width: 65px;
-            height: 65px;
-            border-radius: 50%;
-            border: 2px solid rgba(255,153,51,0.3);
-            object-fit: cover;
-            animation: logoFloat 3s ease-in-out infinite;
-            background: rgba(255,255,255,0.05);
-            padding: 3px;
-            pointer-events: none;
-        }
-        @keyframes logoFloat {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-3px) scale(1.03); }
-        }
-        .main-header .title-section h1 { color: #FFFFFF; font-size: 26px; font-weight: 800; letter-spacing: 0.5px; }
-        .main-header .title-section h1 .brand { color: #FF9933; font-weight: 800; }
-        .main-header .title-section .sub-title { color: rgba(255,255,255,0.4); font-size: 12px; letter-spacing: 3px; font-weight: 400; text-transform: uppercase; }
-        .main-header .status-badge {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: rgba(255,255,255,0.05);
-            padding: 8px 20px;
-            border-radius: 30px;
-            border: 1px solid rgba(255,255,255,0.06);
-        }
-        .main-header .status-badge .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #00ff66;
-            animation: dotPulse 1.5s ease-in-out infinite;
-        }
-        @keyframes dotPulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.3; transform: scale(0.5); }
-        }
-        .main-header .status-badge span { color: rgba(255,255,255,0.4); font-size: 11px; font-weight: 500; letter-spacing: 1px; }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        /* ===== MAIN CONTAINER ===== */
-        .main-container { max-width: 580px; width: 100%; padding: 25px 20px; margin: 25px 0 40px; }
+:root{
+    --bg:#050711;
+    --bg2:#090d1b;
+    --card:rgba(16,21,38,.78);
+    --card2:rgba(255,255,255,.045);
+    --line:rgba(255,255,255,.09);
+    --text:#f7f9ff;
+    --muted:#8b93a8;
+    --accent:#8b5cf6;
+    --accent2:#06b6d4;
+    --success:#22c55e;
+    --danger:#ef4444;
+}
 
-        /* ===== CARD ===== */
-        .card {
-            background: #FFFFFF;
-            border-radius: 20px;
-            box-shadow: 0 8px 40px rgba(0,0,0,0.06);
-            overflow: hidden;
-            border: 1px solid rgba(0,0,0,0.04);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover { transform: translateY(-3px); box-shadow: 0 12px 60px rgba(0,0,0,0.08); }
-        .card-header {
-            background: linear-gradient(135deg, #0a0a2a, #1a1a5a);
-            padding: 25px 30px;
-            border-bottom: 3px solid #FF9933;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .card-header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at center, rgba(255,153,51,0.03) 0%, transparent 70%);
-            animation: headerGlow 8s ease-in-out infinite;
-        }
-        @keyframes headerGlow {
-            0%, 100% { transform: translate(0, 0); }
-            25% { transform: translate(10%, 10%); }
-            75% { transform: translate(-10%, -10%); }
-        }
-        .card-header .badge-gov {
-            display: inline-block;
-            background: rgba(255,153,51,0.12);
-            padding: 5px 20px;
-            border-radius: 30px;
-            border: 1px solid rgba(255,153,51,0.15);
-            color: #FF9933;
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-            position: relative;
-            z-index: 1;
-        }
-        .card-header .badge-gov i { margin-right: 6px; }
-        .card-header .logo-icon {
-            width: 75px;
-            height: 75px;
-            border-radius: 50%;
-            border: 2px solid rgba(255,153,51,0.2);
-            object-fit: cover;
-            margin: 0 auto 12px;
-            display: block;
-            animation: iconFloat 4s ease-in-out infinite;
-            background: rgba(255,255,255,0.05);
-            padding: 3px;
-            pointer-events: none;
-        }
-        @keyframes iconFloat {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-5px) scale(1.05); }
-        }
-        .card-header .card-title { color: #FFFFFF; font-size: 28px; font-weight: 800; letter-spacing: 1px; position: relative; z-index: 1; }
-        .card-header .card-title .highlight { color: #FF9933; }
-        .card-header .card-subtitle { color: rgba(255,255,255,0.35); font-size: 13px; letter-spacing: 2px; margin-top: 6px; position: relative; z-index: 1; }
-        .card-header .card-subtitle i { color: #00ff66; margin-right: 6px; }
-        .card-body { padding: 30px; }
+html{
+    scroll-behavior:smooth;
+}
 
-        /* ===== FORM ===== */
-        .form-group { margin-bottom: 18px; }
-        .form-label { display: block; font-size: 12px; font-weight: 700; color: #333; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
-        .form-label i { color: #FF9933; margin-right: 8px; }
-        .input-group {
-            display: flex;
-            align-items: center;
-            background: #f8f9fa;
-            border: 2px solid #e0e0e0;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            overflow: hidden;
-        }
-        .input-group:focus-within { border-color: #FF9933; box-shadow: 0 0 0 4px rgba(255,153,51,0.08); background: #ffffff; }
-        .input-group .country-code { padding: 14px 14px 14px 20px; color: #333; font-weight: 700; font-size: 15px; background: rgba(0,0,0,0.02); border-right: 1px solid #e0e0e0; }
-        .input-group input {
-            flex: 1;
-            padding: 14px 18px;
-            background: transparent;
-            border: none;
-            color: #333;
-            font-size: 17px;
-            outline: none;
-            font-family: 'Noto Sans Devanagari', 'Segoe UI', Arial, sans-serif;
-            font-weight: 500;
-            letter-spacing: 1.5px;
-        }
-        .input-group input::placeholder { color: #aaa; font-weight: 400; font-size: 14px; letter-spacing: 0.5px; }
+body{
+    min-height:100vh;
+    background:
+        radial-gradient(circle at 15% 10%,rgba(139,92,246,.16),transparent 32%),
+        radial-gradient(circle at 85% 20%,rgba(6,182,212,.12),transparent 30%),
+        radial-gradient(circle at 50% 100%,rgba(139,92,246,.08),transparent 35%),
+        var(--bg);
+    color:var(--text);
+    font-family:Inter,system-ui,sans-serif;
+    overflow-x:hidden;
+}
 
-        /* ===== STATUS ===== */
-        .status-bar { display: flex; align-items: center; gap: 12px; padding: 6px 0 14px; font-size: 12px; color: #888; font-weight: 500; }
-        .status-bar .dot { width: 7px; height: 7px; border-radius: 50%; background: #138808; animation: pulseDot 1.5s infinite; }
-        @keyframes pulseDot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.2; transform: scale(0.4); } }
-        .status-bar .dot.error { background: #dc3545; }
+/* Ambient glow */
 
-        /* ===== BUTTON ===== */
-        .btn-search {
-            width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, #FF9933, #e68a00);
-            border: none;
-            border-radius: 12px;
-            color: #fff;
-            font-size: 17px;
-            font-weight: 700;
-            cursor: pointer;
-            font-family: 'Noto Sans Devanagari', 'Segoe UI', Arial, sans-serif;
-            letter-spacing: 1.5px;
-            transition: all 0.3s ease;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 12px;
-            position: relative;
-            overflow: hidden;
-        }
-        .btn-search::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
-            transition: left 0.6s ease;
-        }
-        .btn-search:hover:not(:disabled)::before { left: 100%; }
-        .btn-search:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(255,153,51,0.25); }
-        .btn-search:active:not(:disabled) { transform: translateY(0) scale(0.98); }
-        .btn-search:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
-        .btn-search i { font-size: 18px; }
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    width:280px;
+    height:280px;
+    border-radius:50%;
+    filter:blur(100px);
+    pointer-events:none;
+    z-index:-1;
+}
 
-        /* ===== RESULT ===== */
-        .result-box {
-            margin-top: 25px;
-            border: 1px solid #e8e8e8;
-            border-radius: 14px;
-            overflow: hidden;
-            display: none;
-            background: #fafbfc;
-        }
-        .result-box.show { display: block; animation: slideUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        @keyframes slideUp { 0% { opacity: 0; transform: translateY(20px) scale(0.97); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
-        .result-header {
-            background: linear-gradient(135deg, #0a0a2a, #1a1a5a);
-            padding: 12px 20px;
-            border-bottom: 2px solid #FF9933;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .result-header .title { font-size: 12px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 1px; }
-        .result-header .title i { color: #FF9933; margin-right: 8px; }
-        .result-header .count { font-size: 11px; color: #FF9933; background: rgba(255,153,51,0.15); padding: 3px 14px; border-radius: 20px; font-weight: 600; }
-        .result-item {
-            display: flex;
-            padding: 14px 20px;
-            border-bottom: 1px solid #f0f0f0;
-            transition: all 0.2s ease;
-        }
-        .result-item:hover { background: #f8f9fa; }
-        .result-item:last-child { border-bottom: none; }
-        .result-item .label {
-            color: #666;
-            font-size: 11px;
-            font-weight: 700;
-            width: 35%;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-        }
-        .result-item .label i { font-size: 14px; color: #FF9933; width: 18px; }
-        .result-item .value {
-            color: #222;
-            font-size: 14px;
-            font-weight: 500;
-            width: 65%;
-            text-align: right;
-            word-break: break-word;
-        }
-        .result-item .value.highlight { color: #e68a00; font-weight: 700; }
-        .result-item .value.green { color: #138808; font-weight: 700; }
-        .result-item .value.address { font-size: 13px; color: #555; line-height: 1.6; }
-        .result-item .value.powered { font-size: 11px; color: #888; font-style: italic; }
+body::before{
+    background:rgba(139,92,246,.10);
+    top:8%;
+    left:-140px;
+}
 
-        /* ===== SECURITY BADGE ===== */
-        .security-badge {
-            margin-top: 18px;
-            padding: 14px;
-            background: #f8f9fa;
-            border-radius: 12px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 25px;
-            flex-wrap: wrap;
-            border: 1px solid #e8e8e8;
-        }
-        .security-badge .badge-item { display: flex; align-items: center; gap: 8px; font-size: 11px; color: #555; font-weight: 500; }
-        .security-badge .badge-item i { color: #138808; font-size: 15px; }
+body::after{
+    background:rgba(6,182,212,.08);
+    right:-140px;
+    bottom:5%;
+}
 
-        /* ===== SOCIAL MEDIA ===== */
-        .social-section {
-            margin-top: 18px;
-            padding: 18px;
-            background: #f8f9fa;
-            border-radius: 12px;
-            text-align: center;
-            border: 1px solid #e8e8e8;
-        }
-        .social-section .social-title { font-size: 11px; color: #777; margin-bottom: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; }
-        .social-section .social-title i { color: #FF9933; margin-right: 8px; }
-        .social-buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
-        .social-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 22px;
-            border-radius: 50px;
-            text-decoration: none;
-            color: #fff;
-            font-size: 13px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            font-family: 'Noto Sans Devanagari', 'Segoe UI', Arial, sans-serif;
-            position: relative;
-            overflow: hidden;
-        }
-        .social-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            transition: left 0.5s ease;
-        }
-        .social-btn:hover::before { left: 100%; }
-        .social-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
-        .social-btn i { font-size: 18px; }
-        .social-btn.youtube { background: #FF0000; }
-        .social-btn.instagram { background: linear-gradient(135deg, #833AB4, #FD1D1D, #F56040); }
-        .social-btn.telegram { background: #0088cc; }
+/* Scrollbar */
 
-        /* ===== JSON TOGGLE ===== */
-        .json-toggle {
-            margin-top: 14px;
-            padding: 12px;
-            background: transparent;
-            border: 1px solid #e0e0e0;
-            border-radius: 10px;
-            color: #888;
-            font-size: 11px;
-            font-weight: 500;
-            cursor: pointer;
-            width: 100%;
-            transition: all 0.3s ease;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            font-family: 'Noto Sans Devanagari', 'Segoe UI', Arial, sans-serif;
-        }
-        .json-toggle:hover { background: #f8f9fa; border-color: #FF9933; color: #FF9933; }
-        .json-toggle i { font-size: 14px; }
-        .json-box {
-            margin-top: 12px;
-            background: #0a0a0a;
-            border-radius: 10px;
-            padding: 14px;
-            font-family: 'Courier New', monospace;
-            font-size: 10px;
-            color: #00ff66;
-            display: none;
-            max-height: 200px;
-            overflow: auto;
-            white-space: pre-wrap;
-            word-break: break-all;
-            line-height: 1.8;
-            border: 1px solid rgba(0,255,102,0.05);
-        }
-        .json-box.show { display: block; animation: slideUp 0.3s ease; }
-        .json-box::-webkit-scrollbar { width: 4px; }
-        .json-box::-webkit-scrollbar-thumb { background: rgba(0,255,102,0.15); border-radius: 4px; }
+::-webkit-scrollbar{
+    width:5px;
+}
 
-        /* ===== FOOTER ===== */
-        .footer-section {
-            width: 100%;
-            background: #0a0a2a;
-            border-top: 3px solid #FF9933;
-            padding: 25px 0;
-            margin-top: 20px;
-        }
-        .footer-section .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; text-align: center; }
-        .footer-section .footer-links { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; margin-bottom: 18px; }
-        .footer-section .footer-links a { color: rgba(255,255,255,0.25); font-size: 11px; text-decoration: none; transition: all 0.3s ease; letter-spacing: 0.5px; font-weight: 500; }
-        .footer-section .footer-links a:hover { color: #FF9933; }
-        .footer-section .footer-links a i { margin-right: 6px; }
-        .footer-section .copyright { color: rgba(255,255,255,0.08); font-size: 10px; letter-spacing: 2px; font-weight: 300; }
-        .footer-section .copyright .brand-name { color: #FF9933; font-weight: 600; }
-        .footer-section .tricolor-footer { width: 100%; height: 4px; display: flex; margin-top: 18px; }
-        .footer-section .tricolor-footer .saffron { width: 33.33%; background: #FF9933; }
-        .footer-section .tricolor-footer .white { width: 33.33%; background: #FFFFFF; }
-        .footer-section .tricolor-footer .green { width: 33.34%; background: #138808; }
+::-webkit-scrollbar-track{
+    background:#070a14;
+}
 
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 768px) {
-            .main-header .title-section h1 { font-size: 18px; }
-            .main-header .title-section .sub-title { font-size: 9px; letter-spacing: 1.5px; }
-            .main-header .logo-img { width: 50px; height: 50px; }
-            .main-header .status-badge { padding: 5px 14px; }
-            .main-header .status-badge span { font-size: 9px; }
-            .top-header .gov-text { font-size: 10px; }
-            .top-header .helpline { font-size: 10px; padding: 3px 12px; }
-            .card-header .card-title { font-size: 22px; }
-            .card-body { padding: 20px; }
-            .card-header { padding: 20px; }
-            .card-header .logo-icon { width: 60px; height: 60px; }
-            .result-item { flex-wrap: wrap; padding: 12px 16px; }
-            .result-item .label { width: 100%; margin-bottom: 4px; }
-            .result-item .value { width: 100%; text-align: left; }
-            .security-badge { gap: 12px; padding: 12px; }
-            .security-badge .badge-item { font-size: 10px; }
-            .social-btn { padding: 8px 16px; font-size: 12px; }
-            .social-btn i { font-size: 15px; }
-            .disclaimer-box { padding: 30px 22px; }
-            .disclaimer-box h2 { font-size: 20px; }
-            .disclaimer-box .icon-big { font-size: 50px; }
-            .disclaimer-box .content { font-size: 13px; }
-            .footer-section .footer-links { gap: 15px; }
-            .footer-section .footer-links a { font-size: 10px; }
-        }
-        @media (max-width: 480px) {
-            .main-header .title-section h1 { font-size: 15px; }
-            .main-header .logo-img { width: 42px; height: 42px; }
-            .card-header .card-title { font-size: 18px; }
-            .main-container { padding: 15px 12px; }
-            .card-body { padding: 16px; }
-            .result-item .value { font-size: 13px; }
-            .social-buttons { gap: 10px; }
-            .social-btn { padding: 7px 14px; font-size: 11px; }
-            .top-header .container { flex-direction: column; text-align: center; }
-            .card-header .logo-icon { width: 50px; height: 50px; }
-        }
+::-webkit-scrollbar-thumb{
+    background:linear-gradient(var(--accent),var(--accent2));
+    border-radius:20px;
+}
 
-        /* ===== ERROR ===== */
-        .error-text { color: #dc3545; font-size: 12px; padding: 6px 0; display: none; font-weight: 500; }
-        .error-text.show { display: block; animation: shake 0.4s ease; }
-        @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+/* Header */
 
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #f0f0f0; }
-        ::-webkit-scrollbar-thumb { background: #FF9933; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #e68a00; }
+.top-header{
+    width:100%;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(5,7,17,.72);
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
+    border-bottom:1px solid var(--line);
+}
 
-        img, svg, video { -webkit-user-drag: none; user-drag: none; pointer-events: none; }
-    </style>
+.header-inner{
+    max-width:1150px;
+    margin:auto;
+    min-height:72px;
+    padding:12px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.brand-logo{
+    width:44px;
+    height:44px;
+    object-fit:contain;
+    border-radius:13px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.12);
+    padding:4px;
+    box-shadow:
+        0 0 25px rgba(139,92,246,.18);
+}
+
+.brand-text{
+    font-family:Orbitron,sans-serif;
+    font-size:15px;
+    font-weight:800;
+    letter-spacing:1.5px;
+}
+
+.brand-text span{
+    color:#a78bfa;
+}
+
+.header-badge{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 14px;
+    border:1px solid rgba(139,92,246,.22);
+    background:rgba(139,92,246,.08);
+    border-radius:50px;
+    color:#b9a7ff;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1px;
+}
+
+.live-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--success);
+    box-shadow:0 0 12px var(--success);
+    animation:pulse 1.8s infinite;
+}
+
+@keyframes pulse{
+    0%,100%{
+        opacity:1;
+        transform:scale(1);
+    }
+    50%{
+        opacity:.45;
+        transform:scale(.7);
+    }
+}
+
+/* Hero */
+
+.hero{
+    max-width:900px;
+    margin:0 auto;
+    padding:58px 20px 25px;
+    text-align:center;
+}
+
+.hero-logo{
+    width:88px;
+    height:88px;
+    object-fit:contain;
+    padding:7px;
+    border-radius:25px;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.045);
+    box-shadow:
+        0 0 0 8px rgba(139,92,246,.035),
+        0 20px 60px rgba(0,0,0,.4),
+        0 0 45px rgba(139,92,246,.16);
+    animation:floatLogo 4s ease-in-out infinite;
+}
+
+@keyframes floatLogo{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-7px)}
+}
+
+.hero h1{
+    margin-top:23px;
+    font-family:Orbitron,sans-serif;
+    font-size:clamp(27px,6vw,48px);
+    font-weight:900;
+    letter-spacing:1px;
+}
+
+.hero h1 .gradient{
+    background:linear-gradient(100deg,#a78bfa,#22d3ee);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    max-width:650px;
+    margin:14px auto 0;
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.8;
+}
+
+/* Main */
+
+.main{
+    width:100%;
+    max-width:620px;
+    margin:auto;
+    padding:15px 16px 50px;
+}
+
+/* Main Card */
+
+.card{
+    position:relative;
+    overflow:hidden;
+    border:1px solid var(--line);
+    border-radius:30px;
+    background:
+        linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.018)),
+        var(--card);
+    backdrop-filter:blur(25px);
+    -webkit-backdrop-filter:blur(25px);
+    box-shadow:
+        0 30px 90px rgba(0,0,0,.45),
+        inset 0 1px rgba(255,255,255,.06);
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    width:300px;
+    height:300px;
+    top:-170px;
+    right:-100px;
+    border-radius:50%;
+    background:rgba(139,92,246,.13);
+    filter:blur(60px);
+    pointer-events:none;
+}
+
+.card-top{
+    position:relative;
+    padding:25px 23px 21px;
+    border-bottom:1px solid var(--line);
+}
+
+.secure-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:7px 13px;
+    border-radius:50px;
+    background:rgba(34,197,94,.07);
+    border:1px solid rgba(34,197,94,.14);
+    color:#6ee7a0;
+    font-size:9px;
+    font-weight:800;
+    letter-spacing:1.5px;
+}
+
+.secure-badge i{
+    font-size:10px;
+}
+
+.card-title{
+    margin-top:17px;
+    font-family:Orbitron,sans-serif;
+    font-size:22px;
+    font-weight:800;
+}
+
+.card-title span{
+    color:#a78bfa;
+}
+
+.card-subtitle{
+    margin-top:8px;
+    color:var(--muted);
+    font-size:11px;
+    line-height:1.6;
+}
+
+.card-subtitle i{
+    color:#22d3ee;
+    margin-right:6px;
+}
+
+/* Body */
+
+.card-body{
+    padding:24px;
+}
+
+/* Label */
+
+.label{
+    display:block;
+    margin-bottom:9px;
+    color:#aab2c4;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:1.3px;
+    text-transform:uppercase;
+}
+
+.label i{
+    color:#a78bfa;
+    margin-right:7px;
+}
+
+/* Input */
+
+.input-wrap{
+    display:flex;
+    align-items:center;
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:17px;
+    overflow:hidden;
+    background:rgba(0,0,0,.18);
+    transition:.3s;
+}
+
+.input-wrap:focus-within{
+    border-color:rgba(139,92,246,.65);
+    box-shadow:
+        0 0 0 4px rgba(139,92,246,.08),
+        0 0 30px rgba(139,92,246,.08);
+}
+
+.country{
+    height:56px;
+    padding:0 16px;
+    display:flex;
+    align-items:center;
+    color:#d8dced;
+    font-size:14px;
+    font-weight:800;
+    border-right:1px solid rgba(255,255,255,.08);
+    background:rgba(255,255,255,.025);
+}
+
+.input-wrap input{
+    width:100%;
+    height:56px;
+    padding:0 17px;
+    border:0;
+    outline:0;
+    background:transparent;
+    color:white;
+    font-size:17px;
+    font-weight:700;
+    letter-spacing:2px;
+    font-family:Inter,sans-serif;
+}
+
+.input-wrap input::placeholder{
+    color:#5f677b;
+    font-size:12px;
+    font-weight:500;
+    letter-spacing:.3px;
+}
+
+/* Status */
+
+.status{
+    min-height:34px;
+    display:flex;
+    align-items:center;
+    gap:9px;
+    color:#727b91;
+    font-size:10px;
+    font-weight:600;
+}
+
+.status-dot{
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:var(--success);
+    box-shadow:0 0 10px rgba(34,197,94,.6);
+}
+
+/* Button */
+
+.search-btn{
+    width:100%;
+    height:56px;
+    border:0;
+    border-radius:17px;
+    cursor:pointer;
+    color:white;
+    background:linear-gradient(110deg,#7c3aed,#6366f1,#0891b2);
+    background-size:200% 100%;
+    font-family:Inter,sans-serif;
+    font-size:13px;
+    font-weight:800;
+    letter-spacing:1.4px;
+    box-shadow:
+        0 12px 35px rgba(99,102,241,.22);
+    transition:.3s;
+    position:relative;
+    overflow:hidden;
+}
+
+.search-btn:hover:not(:disabled){
+    transform:translateY(-2px);
+    background-position:100% 0;
+    box-shadow:
+        0 17px 45px rgba(99,102,241,.32);
+}
+
+.search-btn:active:not(:disabled){
+    transform:scale(.98);
+}
+
+.search-btn:disabled{
+    opacity:.55;
+    cursor:not-allowed;
+}
+
+.search-btn i{
+    margin-right:9px;
+}
+
+/* Error */
+
+.error{
+    display:none;
+    margin:11px 0;
+    padding:12px 14px;
+    border-radius:13px;
+    background:rgba(239,68,68,.07);
+    border:1px solid rgba(239,68,68,.14);
+    color:#fca5a5;
+    font-size:11px;
+    line-height:1.5;
+}
+
+.error.show{
+    display:block;
+}
+
+/* Results */
+
+.results{
+    display:none;
+    margin-top:22px;
+    border:1px solid var(--line);
+    border-radius:20px;
+    overflow:hidden;
+    background:rgba(0,0,0,.13);
+}
+
+.results.show{
+    display:block;
+    animation:resultIn .45s ease;
+}
+
+@keyframes resultIn{
+    from{
+        opacity:0;
+        transform:translateY(12px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.result-head{
+    padding:14px 17px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(255,255,255,.035);
+    border-bottom:1px solid var(--line);
+}
+
+.result-title{
+    color:#e7eaf3;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:1px;
+    text-transform:uppercase;
+}
+
+.result-title i{
+    color:#a78bfa;
+    margin-right:7px;
+}
+
+.count{
+    padding:5px 9px;
+    border-radius:30px;
+    color:#a5b4fc;
+    background:rgba(99,102,241,.10);
+    font-size:9px;
+    font-weight:700;
+}
+
+.result-item{
+    padding:15px 17px;
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    border-bottom:1px solid rgba(255,255,255,.055);
+}
+
+.result-item:last-child{
+    border-bottom:0;
+}
+
+.result-key{
+    color:#737c91;
+    font-size:9px;
+    font-weight:800;
+    letter-spacing:.8px;
+    text-transform:uppercase;
+}
+
+.result-value{
+    max-width:62%;
+    text-align:right;
+    color:#e9ecf5;
+    font-size:12px;
+    font-weight:600;
+    word-break:break-word;
+}
+
+.result-value.accent{
+    color:#c4b5fd;
+}
+
+.result-value.success{
+    color:#86efac;
+}
+
+/* Security */
+
+.security{
+    margin-top:20px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+}
+
+.security-item{
+    padding:12px 7px;
+    text-align:center;
+    border:1px solid var(--line);
+    border-radius:14px;
+    background:rgba(255,255,255,.025);
+}
+
+.security-item i{
+    display:block;
+    margin-bottom:6px;
+    color:#a78bfa;
+    font-size:14px;
+}
+
+.security-item span{
+    color:#7f8799;
+    font-size:8px;
+    font-weight:700;
+    letter-spacing:.4px;
+}
+
+/* Social */
+
+.social{
+    margin-top:15px;
+    padding:18px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:rgba(255,255,255,.025);
+    text-align:center;
+}
+
+.social-title{
+    color:#737c91;
+    font-size:9px;
+    font-weight:800;
+    letter-spacing:1.3px;
+    text-transform:uppercase;
+    margin-bottom:13px;
+}
+
+.social-title i{
+    color:#a78bfa;
+    margin-right:6px;
+}
+
+.social-buttons{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+.social-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    padding:9px 13px;
+    border-radius:11px;
+    text-decoration:none;
+    color:#dfe3ee;
+    font-size:9px;
+    font-weight:700;
+    border:1px solid var(--line);
+    background:rgba(255,255,255,.035);
+    transition:.25s;
+}
+
+.social-btn:hover{
+    transform:translateY(-2px);
+    border-color:rgba(139,92,246,.4);
+    background:rgba(139,92,246,.08);
+}
+
+.social-btn i{
+    font-size:13px;
+}
+
+/* JSON */
+
+.json-toggle{
+    width:100%;
+    margin-top:14px;
+    padding:13px;
+    border:1px solid var(--line);
+    border-radius:14px;
+    background:transparent;
+    color:#737c91;
+    cursor:pointer;
+    font-size:9px;
+    font-weight:700;
+    letter-spacing:.8px;
+    transition:.25s;
+}
+
+.json-toggle:hover{
+    color:#c4b5fd;
+    border-color:rgba(139,92,246,.35);
+}
+
+.json-box{
+    display:none;
+    max-height:230px;
+    overflow:auto;
+    margin-top:10px;
+    padding:14px;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:14px;
+    background:#03050b;
+    color:#8ef0c0;
+    font:10px/1.7 "Courier New",monospace;
+    white-space:pre-wrap;
+    word-break:break-all;
+}
+
+.json-box.show{
+    display:block;
+}
+
+/* Footer */
+
+.footer{
+    padding:28px 18px 35px;
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,.06);
+}
+
+.footer-brand{
+    font-family:Orbitron,sans-serif;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:1.5px;
+}
+
+.footer-brand span{
+    color:#a78bfa;
+}
+
+.footer p{
+    margin-top:9px;
+    color:#50586c;
+    font-size:9px;
+    letter-spacing:.6px;
+}
+
+/* Disclaimer */
+
+.overlay{
+    position:fixed;
+    inset:0;
+    z-index:99999;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:18px;
+    background:rgba(2,4,10,.84);
+    backdrop-filter:blur(25px);
+    -webkit-backdrop-filter:blur(25px);
+    transition:.5s;
+}
+
+.overlay.hidden{
+    opacity:0;
+    visibility:hidden;
+}
+
+.disclaimer{
+    width:100%;
+    max-width:440px;
+    padding:34px 25px;
+    text-align:center;
+    border:1px solid rgba(139,92,246,.2);
+    border-radius:28px;
+    background:
+        linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025)),
+        #0a0e1b;
+    box-shadow:0 40px 100px rgba(0,0,0,.65);
+    animation:modalIn .5s ease;
+}
+
+@keyframes modalIn{
+    from{
+        opacity:0;
+        transform:scale(.94) translateY(15px);
+    }
+    to{
+        opacity:1;
+        transform:scale(1) translateY(0);
+    }
+}
+
+.disclaimer-logo{
+    width:70px;
+    height:70px;
+    object-fit:contain;
+    padding:5px;
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.disclaimer h2{
+    margin-top:17px;
+    font-family:Orbitron,sans-serif;
+    font-size:21px;
+}
+
+.disclaimer .line{
+    width:55px;
+    height:2px;
+    margin:12px auto;
+    background:linear-gradient(90deg,#8b5cf6,#22d3ee);
+    border-radius:10px;
+}
+
+.disclaimer p{
+    color:#7e879b;
+    font-size:11px;
+    line-height:1.8;
+}
+
+.disclaimer strong{
+    color:#bbaaff;
+}
+
+.accept{
+    width:100%;
+    margin-top:20px;
+    padding:14px;
+    border:0;
+    border-radius:14px;
+    background:linear-gradient(110deg,#7c3aed,#0891b2);
+    color:white;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1px;
+    cursor:pointer;
+}
+
+/* Mobile */
+
+@media(max-width:520px){
+
+    .header-inner{
+        min-height:64px;
+        padding:10px 14px;
+    }
+
+    .brand-logo{
+        width:38px;
+        height:38px;
+    }
+
+    .brand-text{
+        font-size:12px;
+    }
+
+    .header-badge{
+        padding:7px 9px;
+        font-size:8px;
+    }
+
+    .hero{
+        padding:42px 16px 18px;
+    }
+
+    .hero-logo{
+        width:72px;
+        height:72px;
+    }
+
+    .hero h1{
+        font-size:25px;
+    }
+
+    .hero p{
+        font-size:11px;
+    }
+
+    .main{
+        padding:8px 11px 35px;
+    }
+
+    .card{
+        border-radius:24px;
+    }
+
+    .card-top{
+        padding:21px 18px;
+    }
+
+    .card-body{
+        padding:18px 15px;
+    }
+
+    .card-title{
+        font-size:18px;
+    }
+
+    .security-item span{
+        font-size:7px;
+    }
+
+    .result-item{
+        flex-direction:column;
+        gap:7px;
+    }
+
+    .result-value{
+        max-width:100%;
+        text-align:left;
+    }
+}
+
+@media(prefers-reduced-motion:reduce){
+    *,
+    *::before,
+    *::after{
+        animation-duration:.01ms!important;
+        animation-iteration-count:1!important;
+        scroll-behavior:auto!important;
+    }
+}
+</style>
 </head>
+
 <body>
 
-<!-- ===== DISCLAIMER POPUP ===== -->
-<div class="disclaimer-overlay" id="disclaimerOverlay">
-    <div class="disclaimer-box">
-        <span class="icon-big">🛡️</span>
-        <div class="brand-name">SUBHA-X-MD</div>
-        <h2>DISCLAIMER</h2>
-        <div class="divider"></div>
-        <div class="content">
-            This tool is for <strong>educational and security awareness</strong> purposes only.<br>
-            All data is obtained from <strong>publicly available sources</strong>.<br><br>
-            <i class="fas fa-link" style="color:#FF9933;"></i> Use responsibly &amp; ethically.
-        </div>
-        <button class="btn-accept" onclick="acceptDisclaimer()">
-            <i class="fas fa-check-circle"></i> I UNDERSTAND
+<!-- DISCLAIMER -->
+
+<div class="overlay" id="disclaimerOverlay">
+
+    <div class="disclaimer">
+
+        <img
+            class="disclaimer-logo"
+            src="https://i.ibb.co/QvBBYVRk/84d24370-0c70-44c5-90ef-4e1cc56e25f6.png"
+            alt="SUBHO NET"
+        >
+
+        <h2>SUBHO•NΞT</h2>
+
+        <div class="line"></div>
+
+        <p>
+            This platform is intended for
+            <strong>educational, security-awareness and authorized use</strong>.
+            Please use information responsibly and ethically.
+        </p>
+
+        <button class="accept" onclick="acceptDisclaimer()">
+            <i class="fas fa-check-circle"></i>
+            &nbsp; I UNDERSTAND
         </button>
+
     </div>
+
 </div>
 
-<!-- ===== TRICOLOR TOP BAR ===== -->
-<div class="tricolor-bar">
-    <div class="saffron"></div>
-    <div class="white"></div>
-    <div class="green"></div>
-</div>
 
-<!-- ===== TOP HEADER ===== -->
-<div class="top-header">
-    <div class="container">
-        <div class="gov-text">
-            <i class="fas fa-shield-halved"></i>
-            SUBHA-X-MD <span>|</span> CYBER SECURITY DIVISION
-        </div>
-        <div class="helpline">
-            <i class="fas fa-phone"></i> <strong>Helpline: +91 9932227936</strong>
-        </div>
-    </div>
-</div>
+<!-- HEADER -->
 
-<!-- ===== MAIN HEADER ===== -->
-<div class="main-header">
-    <div class="container">
-        <div class="logo-section">
-            <img src="https://i.postimg.cc/TYmvD4gS/file-0000000028fc821190e723e06af39902.png" alt="SUBHA-X-MD Logo" class="logo-img" draggable="false">
-            <div class="title-section">
-                <h1>
-                    <span class="brand">SUBHA-</span> X-MD
-                </h1>
-                <div class="sub-title">🔴 OSINT · SECURITY RESEARCH · INTELLIGENCE</div>
+<header class="top-header">
+
+    <div class="header-inner">
+
+        <div class="brand">
+
+            <img
+                class="brand-logo"
+                src="https://i.ibb.co/QvBBYVRk/84d24370-0c70-44c5-90ef-4e1cc56e25f6.png"
+                alt="Logo"
+            >
+
+            <div class="brand-text">
+                SUBHO<span>•NΞT</span>
             </div>
+
         </div>
-        <div class="status-badge">
-            <div class="dot"></div>
-            <span>SYSTEM ACTIVE</span>
+
+        <div class="header-badge">
+            <span class="live-dot"></span>
+            SYSTEM ONLINE
         </div>
+
     </div>
-</div>
 
-<!-- ===== MAIN CONTAINER ===== -->
-<div class="main-container">
+</header>
 
-    <div class="card">
 
-        <!-- Card Header -->
-        <div class="card-header">
-            <div class="badge-gov">
-                <i class="fas fa-lock"></i> SECURE · ENCRYPTED
+<!-- HERO -->
+
+<section class="hero">
+
+    <img
+        class="hero-logo"
+        src="https://i.ibb.co/QvBBYVRk/84d24370-0c70-44c5-90ef-4e1cc56e25f6.png"
+        alt="SUBHO NET"
+    >
+
+    <h1>
+        <span class="gradient">NUMBER</span>
+        INTELLIGENCE
+    </h1>
+
+    <p>
+        Advanced information interface with a clean,
+        secure and modern intelligence dashboard.
+    </p>
+
+</section>
+
+
+<!-- MAIN -->
+
+<main class="main">
+
+    <section class="card">
+
+        <!-- Card Top -->
+
+        <div class="card-top">
+
+            <div class="secure-badge">
+                <i class="fas fa-shield-halved"></i>
+                SECURE SYSTEM
             </div>
-            <img src="https://i.postimg.cc/TYmvD4gS/file-0000000028fc821190e723e06af39902.png" alt="SUBHA-X-MD Logo" class="logo-icon" draggable="false">
+
             <div class="card-title">
-                <span class="highlight">NUMBER</span> INFORMATION
+                PHONE <span>SEARCH</span>
             </div>
+
             <div class="card-subtitle">
-                <i class="fas fa-shield"></i>
-                Advanced Phone Number Intelligence System
+                <i class="fas fa-circle-check"></i>
+                Enter an authorized 10-digit mobile number
             </div>
+
         </div>
+
 
         <!-- Card Body -->
+
         <div class="card-body">
 
-            <!-- Form -->
-            <form id="trackForm" method="POST" action="">
-                <div class="form-group">
-                    <label class="form-label">
-                        <i class="fas fa-phone"></i> Enter 10-Digit Mobile Number
-                    </label>
-                    <div class="input-group">
-                        <span class="country-code">+91</span>
-                        <input type="tel" id="phoneInput" name="number" placeholder="Enter phone number" maxlength="10" inputmode="numeric" value="">
-                    </div>
+            <form id="trackForm">
+
+                <label class="label">
+                    <i class="fas fa-mobile-screen"></i>
+                    Mobile Number
+                </label>
+
+                <div class="input-wrap">
+
+                    <span class="country">+91</span>
+
+                    <input
+                        type="tel"
+                        id="phoneInput"
+                        maxlength="10"
+                        inputmode="numeric"
+                        autocomplete="off"
+                        placeholder="Enter 10-digit number"
+                    >
+
                 </div>
 
-                <div class="status-bar">
-                    <span class="dot" id="statusDot"></span>
-                    <span id="statusText">Ready to track</span>
+
+                <div class="status">
+
+                    <span class="status-dot" id="statusDot"></span>
+
+                    <span id="statusText">
+                        Ready to search
+                    </span>
+
                 </div>
 
-                <div class="error-text" id="errorText">❌ Error message</div>
 
-                <button type="submit" class="btn-search" id="trackBtn">
-                    <i class="fas fa-search"></i> GET INFORMATION
+                <div class="error" id="errorText"></div>
+
+
+                <button
+                    class="search-btn"
+                    id="trackBtn"
+                    type="submit"
+                >
+                    <i class="fas fa-magnifying-glass"></i>
+                    GET INFORMATION
                 </button>
+
             </form>
 
-            <!-- Result -->
-            <div class="result-box" id="resultBox">
-                <div class="result-header">
-                    <div class="title">
-                        <i class="fas fa-file-alt"></i> Citizen Information
+
+            <!-- RESULTS -->
+
+            <div class="results" id="resultBox">
+
+                <div class="result-head">
+
+                    <div class="result-title">
+                        <i class="fas fa-database"></i>
+                        Authorized Result
                     </div>
+
                     <div class="count">
-                        <i class="fas fa-database"></i> <span id="recordCount">0</span> Record(s)
+                        <span id="recordCount">0</span>
+                        RECORD
                     </div>
+
                 </div>
+
                 <div id="resultContent"></div>
+
             </div>
 
-            <!-- Security Badge -->
-            <div class="security-badge">
-                <div class="badge-item"><i class="fas fa-lock"></i> SSL Secure</div>
-                <div class="badge-item"><i class="fas fa-shield-halved"></i> SUBHA-X-MD</div>
-                <div class="badge-item"><i class="fas fa-check-circle"></i> Verified</div>
-                <div class="badge-item"><i class="fas fa-clock"></i> 24x7 Service</div>
-            </div>
 
-            <!-- Social Media -->
-            <div class="social-section">
-                <div class="social-title"><i class="fas fa-share-alt"></i> Connect With SUBHA-X-MD</div>
-                <div class="social-buttons">
-                    <a href="https://youtube.com/@humming_king_subhadip?si=RbjYaH3G-vMfaUVa" target="_blank" class="social-btn youtube"><i class="fab fa-youtube"></i> YouTube</a>
-                    <a href="https://www.instagram.com/subha_xmd?igsh=dnB2ZXIxNzRxMjlm" target="_blank" class="social-btn instagram"><i class="fab fa-instagram"></i> Instagram</a>
-                    <a href="https://t.me/subhaXnumber_info" target="_blank" class="social-btn telegram"><i class="fab fa-telegram-plane"></i> Telegram</a>
+            <!-- SECURITY -->
+
+            <div class="security">
+
+                <div class="security-item">
+                    <i class="fas fa-lock"></i>
+                    <span>SECURE</span>
                 </div>
+
+                <div class="security-item">
+                    <i class="fas fa-shield-halved"></i>
+                    <span>PROTECTED</span>
+                </div>
+
+                <div class="security-item">
+                    <i class="fas fa-bolt"></i>
+                    <span>FAST API</span>
+                </div>
+
             </div>
 
-            <!-- JSON Toggle -->
-            <button class="json-toggle" onclick="toggleJson()">
-                <i class="fas fa-code"></i> View Raw Data (JSON)
+
+            <!-- SOCIAL -->
+
+            <div class="social">
+
+                <div class="social-title">
+                    <i class="fas fa-share-nodes"></i>
+                    Connect With SUBHO•NΞT
+                </div>
+
+                <div class="social-buttons">
+
+                    <a
+                        href="https://youtube.com/@statuskingsubho"
+                        target="_blank"
+                        class="social-btn"
+                    >
+                        <i class="fab fa-youtube"></i>
+                        YouTube
+                    </a>
+
+                    <a
+                        href="https://www.instagram.com/y_o_u_r__s_u_b_h_o/"
+                        target="_blank"
+                        class="social-btn"
+                    >
+                        <i class="fab fa-instagram"></i>
+                        Instagram
+                    </a>
+
+                    <a
+                        href="https://t.me/Subhodip52"
+                        target="_blank"
+                        class="social-btn"
+                    >
+                        <i class="fab fa-telegram-plane"></i>
+                        Telegram
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- JSON -->
+
+            <button
+                class="json-toggle"
+                id="jsonToggle"
+                type="button"
+            >
+                <i class="fas fa-code"></i>
+                &nbsp; VIEW RAW API RESPONSE
             </button>
 
             <div class="json-box" id="jsonBox"></div>
 
         </div>
+
+    </section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+    <div class="footer-brand">
+        SUBHO<span>•NΞT</span>
     </div>
 
-</div>
+    <p>
+        PREMIUM INTELLIGENCE INTERFACE · ALL RIGHTS RESERVED
+    </p>
 
-<!-- ===== FOOTER ===== -->
-<div class="footer-section">
-    <div class="container">
-        <div class="footer-links">
-            <a href="#"><i class="fas fa-info-circle"></i> About SUBHA-X-MD</a>
-            <a href="#"><i class="fas fa-shield-halved"></i> Privacy Policy</a>
-            <a href="#"><i class="fas fa-gavel"></i> Terms & Conditions</a>
-            <a href="https://t.me/subhaXnumber_info" target="_blank"><i class="fas fa-headset"></i> Support</a>
-            <a href="tel:+916209856775"><i class="fas fa-phone"></i> Contact</a>
-        </div>
-        <div class="copyright">
-            © 2024 <span class="brand-name">SUBHA-X-MD</span> · All Rights Reserved
-        </div>
-        <div class="tricolor-footer">
-            <div class="saffron"></div>
-            <div class="white"></div>
-            <div class="green"></div>
-        </div>
-    </div>
-</div>
+</footer>
 
-<!-- ===== JAVASCRIPT ===== -->
+
 <script>
-// ============================================
-// DISCLAIMER - ONLY ONCE
-// ============================================
-(function() {
-    if (sessionStorage.getItem('disclaimerShown') === 'true') {
-        document.getElementById('disclaimerOverlay').classList.add('hide-permanent');
-    }
+
+/* ================================
+   DISCLAIMER
+================================ */
+
+(function(){
+
+    try{
+
+        if(sessionStorage.getItem("disclaimerShown")==="true"){
+
+            document
+                .getElementById("disclaimerOverlay")
+                .classList.add("hidden");
+
+        }
+
+    }catch(e){}
+
 })();
 
-function acceptDisclaimer() {
-    sessionStorage.setItem('disclaimerShown', 'true');
-    document.getElementById('disclaimerOverlay').classList.add('hidden');
-    setTimeout(function() {
-        document.getElementById('disclaimerOverlay').classList.add('hide-permanent');
-    }, 800);
+
+function acceptDisclaimer(){
+
+    try{
+        sessionStorage.setItem("disclaimerShown","true");
+    }catch(e){}
+
+    document
+        .getElementById("disclaimerOverlay")
+        .classList.add("hidden");
+
 }
 
-// ============================================
-// TOGGLE JSON
-// ============================================
-function toggleJson() {
-    const box = document.getElementById('jsonBox');
-    box.classList.toggle('show');
-    if (box.classList.contains('show')) {
-        box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
-}
 
-// ============================================
-// CALL API - USING PHP PROXY
-// ============================================
-async function callAPI(number) {
-    try {
-        const response = await fetch('/index.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-Requested-With': 'XMLHttpRequest'
+/* ================================
+   API কল (Netlify Function-এ)
+================================ */
+
+async function callAPI(number){
+
+    try{
+
+        // Netlify function-এর ঠিকানা
+        const response = await fetch("/.netlify/functions/api-lookup",{
+
+            method:"POST",
+
+            headers:{
+                "Content-Type":"application/json",
+                "X-Requested-With":"XMLHttpRequest"
             },
-            body: JSON.stringify({ number: number })
+
+            body:JSON.stringify({
+                number:number
+            })
+
         });
-        
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+
+
+        if(!response.ok){
+
+            throw new Error(
+                "HTTP Error: "+response.status
+            );
+
         }
-        
+
+
         const data = await response.json();
-        console.log('📦 API Response:', data);
+
+        console.log("API Response:",data);
+
         return data;
-        
-    } catch (error) {
-        console.error('❌ API Error:', error);
-        return { status: 'error', message: error.message };
+
+    }catch(error){
+
+        console.error("API Error:",error);
+
+        return{
+            status:"error",
+            message:error.message
+        };
+
     }
+
 }
 
-// ============================================
-// DISPLAY RESULTS
-// ============================================
-function displayResults(number, data) {
-    const resultBox = document.getElementById('resultBox');
-    const resultContent = document.getElementById('resultContent');
-    const recordCount = document.getElementById('recordCount');
-    const jsonBox = document.getElementById('jsonBox');
-    
-    jsonBox.textContent = JSON.stringify(data, null, 2);
-    
-    if (data.status === 'error') {
-        resultBox.classList.remove('show');
-        document.getElementById('errorText').textContent = '❌ ' + (data.message || 'API Error');
-        document.getElementById('errorText').classList.add('show');
+
+/* ================================
+   রেজাল্ট দেখানো (নতুন ফিল্ড অনুযায়ী)
+================================ */
+
+function displayResults(data){
+
+    const resultBox =
+        document.getElementById("resultBox");
+
+    const resultContent =
+        document.getElementById("resultContent");
+
+    const recordCount =
+        document.getElementById("recordCount");
+
+    const jsonBox =
+        document.getElementById("jsonBox");
+
+
+    jsonBox.textContent =
+        JSON.stringify(data,null,2);
+
+
+    if(data.status==="error"){
+
+        resultBox.classList.remove("show");
+
+        showError(
+            data.message || "API request failed."
+        );
+
         return;
-    }
-    
-    if (data.result && data.result.length > 0) {
-        const results = data.result;
-        const totalRecords = results.length;
-        recordCount.textContent = totalRecords;
-        
-        let html = '';
-        const info = results[0];
-        
-        // Check if we have valid data
-        const hasData = Object.values(info).some(v => v && v !== 'null' && v !== '');
-        
-        if (hasData) {
-            // Name
-            if (info.name && info.name !== 'null' && info.name !== '') {
-                html += `<div class="result-item">
-                    <span class="label"><i class="fas fa-user"></i> Full Name</span>
-                    <span class="value highlight">${info.name}</span>
-                </div>`;
-            }
-            
-            // Father's Name
-            if (info.fathersName && info.fathersName !== 'null' && info.fathersName !== '') {
-                html += `<div class="result-item">
-                    <span class="label"><i class="fas fa-user-tie"></i> Father's Name</span>
-                    <span class="value">${info.fathersName}</span>
-                </div>`;
-            }
-            
-            // Phone Number
-            if (info.phone && info.phone !== 'null' && info.phone !== '') {
-                html += `<div class="result-item">
-                    <span class="label"><i class="fas fa-phone"></i> Phone Number</span>
-                    <span class="value highlight">${info.phone}</span>
-                </div>`;
-            }
-            
-            // Aadhaar Number
-            if (info.aadhar && info.aadhar !== 'null' && info.aadhar !== '') {
-                html += `<div class="result-item">
-                    <span class="label"><i class="fas fa-id-card"></i> Aadhaar Number</span>
-                    <span class="value green">${info.aadhar}</span>
-                </div>`;
-            }
-            
-            // Address
-            if (info.address && info.address !== 'null' && info.address !== '') {
-                html += `<div class="result-item">
-                    <span class="label"><i class="fas fa-map-pin"></i> Address</span>
-                    <span class="value address">${info.address}</span>
-                </div>`;
-            }
-            
-            // Other Number
-            if (info.otherNumber && info.otherNumber !== 'null' && info.otherNumber !== '') {
-                html += `<div class="result-item">
-                    <span class="label"><i class="fas fa-phone-plus"></i> Other Number</span>
-                    <span class="value">${info.otherNumber}</span>
-                </div>`;
-            }
-            
-            // Connected Numbers
-            if (info.connectedNumbers && info.connectedNumbers !== 'null' && info.connectedNumbers !== '') {
-                html += `<div class="result-item">
-                    <span class="label"><i class="fas fa-link"></i> Connected Numbers</span>
-                    <span class="value">${info.connectedNumbers}</span>
-                </div>`;
-            }
-            
-            // State
-            if (info.state && info.state !== 'null' && info.state !== '') {
-                html += `<div class="result-item">
-                    <span class="label"><i class="fas fa-map-marker-alt"></i> State</span>
-                    <span class="value">${info.state}</span>
-                </div>`;
-            }
-            
-            // District
-            if (info.district && info.district !== 'null' && info.district !== '') {
-                html += `<div class="result-item">
-                    <span class="label"><i class="fas fa-city"></i> District</span>
-                    <span class="value">${info.district}</span>
-                </div>`;
-            }
-            
-            // Town
-            if (info.town && info.town !== 'null' && info.town !== '') {
-                html += `<div class="result-item">
-                    <span class="label"><i class="fas fa-building"></i> Town</span>
-                    <span class="value">${info.town}</span>
-                </div>`;
-            }
-            
-            // Pincode
-            if (info.pincode && info.pincode !== 'null' && info.pincode !== '') {
-                html += `<div class="result-item">
-                    <span class="label"><i class="fas fa-mail-bulk"></i> Pincode</span>
-                    <span class="value">${info.pincode}</span>
-                </div>`;
-            }
-            
-            // Source
-            if (info.source && info.source !== 'null' && info.source !== '') {
-                html += `<div class="result-item">
-                    <span class="label"><i class="fas fa-database"></i> Source</span>
-                    <span class="value powered">${info.source}</span>
-                </div>`;
-            }
-            
-            // Powered By
-            if (info.poweredBy && info.poweredBy !== 'null' && info.poweredBy !== '') {
-                html += `<div class="result-item" style="background:#f8f9fa; border-bottom: none;">
-                    <span class="label"><i class="fas fa-bolt"></i> Powered By</span>
-                    <span class="value powered" style="color:#FF9933;">${info.poweredBy}</span>
-                </div>`;
-            }
-            
-            // Count
-            if (info.count && info.count !== 'null' && info.count !== '') {
-                html += `<div class="result-item" style="border-bottom: none;">
-                    <span class="label"><i class="fas fa-cubes"></i> Total Records</span>
-                    <span class="value highlight">${info.count}</span>
-                </div>`;
-            }
-            
-        } else {
-            // Fallback: Show all data as JSON
-            html += `<div class="result-item">
-                <span class="label"><i class="fas fa-database"></i> Data</span>
-                <span class="value" style="font-size:12px; color:#666;">${JSON.stringify(info, null, 2)}</span>
-            </div>`;
-        }
-        
-        resultContent.innerHTML = html;
-        resultBox.classList.add('show');
-        document.getElementById('errorText').classList.remove('show');
-        
-    } else {
-        resultBox.classList.remove('show');
-        document.getElementById('errorText').textContent = '❌ No data found for this number!';
-        document.getElementById('errorText').classList.add('show');
-    }
-}
 
-// ============================================
-// SEARCH FUNCTION
-// ============================================
-async function searchNumber() {
-    const input = document.getElementById('phoneInput');
-    const number = input.value.trim();
-    const statusText = document.getElementById('statusText');
-    const statusDot = document.getElementById('statusDot');
-    const trackBtn = document.getElementById('trackBtn');
-    const errorText = document.getElementById('errorText');
-    
-    if (!number || number.length !== 10 || !/^[0-9]{10}$/.test(number)) {
-        errorText.textContent = '⚠️ Please enter a valid 10-digit phone number!';
-        errorText.classList.add('show');
+    }
+
+
+    let results=[];
+
+    if(Array.isArray(data.result)){
+        results=data.result;
+    }
+
+
+    recordCount.textContent=results.length;
+
+
+    if(!results.length){
+
+        resultBox.classList.remove("show");
+
+        showError("No authorized result found.");
+
         return;
+
     }
-    
-    errorText.classList.remove('show');
-    
-    trackBtn.disabled = true;
-    trackBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> SEARCHING...';
-    statusText.textContent = '🔍 Searching...';
-    statusDot.className = 'dot';
-    
-    document.getElementById('resultBox').classList.remove('show');
-    
-    try {
-        const data = await callAPI(number);
-        displayResults(number, data);
-        
-        if (data.status === 'success' && data.result && data.result.length > 0) {
-            statusText.textContent = '✅ Search completed (' + data.result.length + ' records found)';
-            statusDot.className = 'dot';
-        } else if (data.status === 'error') {
-            statusText.textContent = '❌ API Error';
-            statusDot.className = 'dot error';
-        } else {
-            statusText.textContent = '❌ No data found';
-            statusDot.className = 'dot error';
+
+
+    // প্রথম রেকর্ডটি নিন
+    const info = results[0];
+
+    // যে ফিল্ডগুলো দেখাবো
+    const fields = [
+        { key: 'num', label: '📱 Phone Number', css: 'accent' },
+        { key: 'name', label: '👤 Full Name', css: 'accent' },
+        { key: 'fname', label: '👨 Father\\'s Name', css: '' },
+        { key: 'aadhar', label: '🆔 Aadhaar Number', css: 'success' },
+        { key: 'address', label: '📍 Address', css: '' },
+        { key: 'circle', label: '📡 Network Circle', css: '' },
+        { key: 'alt', label: '📞 Alternate Number', css: '' },
+        { key: 'email', label: '✉️ Email', css: '' }
+    ];
+
+    let html = "";
+
+    fields.forEach(function(field){
+
+        const value = info[field.key];
+
+        if(
+            value &&
+            value !== "" &&
+            value !== "null" &&
+            value !== "N/A"
+        ){
+
+            html += `
+                <div class="result-item">
+
+                    <div class="result-key">
+                        ${escapeHTML(field.label)}
+                    </div>
+
+                    <div class="result-value ${field.css}">
+                        ${escapeHTML(String(value))}
+                    </div>
+
+                </div>
+            `;
+
         }
-        
-    } catch (error) {
-        console.error('Search Error:', error);
-        statusText.textContent = '❌ Connection error';
-        statusDot.className = 'dot error';
-        errorText.textContent = '❌ Network error. Please try again.';
-        errorText.classList.add('show');
+
+    });
+
+
+    if(!html){
+
+        html=`
+            <div class="result-item">
+
+                <div class="result-key">
+                    Response
+                </div>
+
+                <div class="result-value">
+                    API response received successfully.
+                </div>
+
+            </div>
+        `;
+
     }
-    
-    trackBtn.disabled = false;
-    trackBtn.innerHTML = '<i class="fas fa-search"></i> GET INFORMATION';
+
+
+    resultContent.innerHTML=html;
+
+    resultBox.classList.add("show");
+
+    document
+        .getElementById("errorText")
+        .classList.remove("show");
+
 }
 
-// ============================================
-// EVENT LISTENERS
-// ============================================
-document.getElementById('trackForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    searchNumber();
-});
 
-document.getElementById('phoneInput').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') {
+/* ================================
+   SEARCH
+================================ */
+
+async function searchNumber(){
+
+    const input =
+        document.getElementById("phoneInput");
+
+    const number =
+        input.value.trim();
+
+    const btn =
+        document.getElementById("trackBtn");
+
+    const statusText =
+        document.getElementById("statusText");
+
+    const statusDot =
+        document.getElementById("statusDot");
+
+
+    if(!/^[0-9]{10}$/.test(number)){
+
+        showError(
+            "Please enter a valid 10-digit mobile number."
+        );
+
+        return;
+
+    }
+
+
+    hideError();
+
+
+    btn.disabled=true;
+
+    btn.innerHTML=
+        '<i class="fas fa-spinner fa-spin"></i> SEARCHING...';
+
+
+    statusText.textContent=
+        "Connecting to API...";
+
+    statusDot.style.background="#a78bfa";
+
+    statusDot.style.boxShadow=
+        "0 0 10px rgba(167,139,250,.7)";
+
+
+    document
+        .getElementById("resultBox")
+        .classList.remove("show");
+
+
+    try{
+
+        const data=await callAPI(number);
+
+        displayResults(data);
+
+
+        if(data.status==="success"){
+
+            statusText.textContent=
+                "Search completed successfully.";
+
+            statusDot.style.background="#22c55e";
+
+            statusDot.style.boxShadow=
+                "0 0 10px rgba(34,197,94,.7)";
+
+        }else{
+
+            statusText.textContent=
+                "API returned an error.";
+
+            statusDot.style.background="#ef4444";
+
+            statusDot.style.boxShadow=
+                "0 0 10px rgba(239,68,68,.7)";
+
+        }
+
+
+    }catch(error){
+
+        console.error(error);
+
+        statusText.textContent=
+            "Connection error.";
+
+        statusDot.style.background="#ef4444";
+
+        statusDot.style.boxShadow=
+            "0 0 10px rgba(239,68,68,.7)";
+
+        showError(
+            "Unable to connect to the API."
+        );
+
+    }
+
+
+    btn.disabled=false;
+
+    btn.innerHTML=
+        '<i class="fas fa-magnifying-glass"></i> GET INFORMATION';
+
+}
+
+
+/* ================================
+   ERROR
+================================ */
+
+function showError(message){
+
+    const error=
+        document.getElementById("errorText");
+
+    error.textContent="⚠️ "+message;
+
+    error.classList.add("show");
+
+}
+
+
+function hideError(){
+
+    document
+        .getElementById("errorText")
+        .classList.remove("show");
+
+}
+
+
+/* ================================
+   JSON TOGGLE
+================================ */
+
+document
+    .getElementById("jsonToggle")
+    .addEventListener("click",function(){
+
+        const box=
+            document.getElementById("jsonBox");
+
+        box.classList.toggle("show");
+
+        this.innerHTML=
+            box.classList.contains("show")
+            ?
+            '<i class="fas fa-code"></i> HIDE RAW API RESPONSE'
+            :
+            '<i class="fas fa-code"></i> VIEW RAW API RESPONSE';
+
+    });
+
+
+/* ================================
+   FORM
+================================ */
+
+document
+    .getElementById("trackForm")
+    .addEventListener("submit",function(e){
+
         e.preventDefault();
+
         searchNumber();
-    }
-});
 
-document.getElementById('phoneInput').addEventListener('input', function(e) {
-    this.value = this.value.replace(/[^0-9]/g, '');
-});
+    });
 
-// ============================================
-// DISABLE COPY
-// ============================================
-document.addEventListener('contextmenu', function(e) {
-    e.preventDefault();
-    return false;
-});
 
-document.addEventListener('keydown', function(e) {
-    if (e.ctrlKey && (e.key === 'c' || e.key === 'v' || e.key === 's' || e.key === 'p' || e.key === 'u')) {
-        e.preventDefault();
-        return false;
-    }
-    if (e.key === 'F12') {
-        e.preventDefault();
-        return false;
-    }
-});
+/* ================================
+   INPUT
+================================ */
 
-document.addEventListener('dragstart', function(e) {
-    e.preventDefault();
-    return false;
-});
+document
+    .getElementById("phoneInput")
+    .addEventListener("input",function(){
 
-console.log('🛑 Auto Search Disabled - User will search manually');
+        this.value=
+            this.value.replace(/[^0-9]/g,"");
+
+    });
+
+
+/* ================================
+   ESCAPE HTML
+================================ */
+
+function escapeHTML(value){
+
+    return value
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* ================================
+   BASIC IMAGE DRAG PREVENTION
+================================ */
+
+document
+    .querySelectorAll("img")
+    .forEach(function(img){
+
+        img.addEventListener("dragstart",
+            function(e){
+                e.preventDefault();
+            }
+        );
+
+    });
+
+
+console.log(
+    "SUBHO•NΞT · Premium Intelligence Interface"
+);
+
 </script>
 
 </body>
