@@ -1,0 +1,1658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>SUBHO•NΞT · Intelligence</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#050711;
+    --bg2:#090d1b;
+    --card:rgba(16,21,38,.78);
+    --card2:rgba(255,255,255,.045);
+    --line:rgba(255,255,255,.09);
+    --text:#f7f9ff;
+    --muted:#8b93a8;
+    --accent:#8b5cf6;
+    --accent2:#06b6d4;
+    --success:#22c55e;
+    --danger:#ef4444;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    background:
+        radial-gradient(circle at 15% 10%,rgba(139,92,246,.16),transparent 32%),
+        radial-gradient(circle at 85% 20%,rgba(6,182,212,.12),transparent 30%),
+        radial-gradient(circle at 50% 100%,rgba(139,92,246,.08),transparent 35%),
+        var(--bg);
+    color:var(--text);
+    font-family:Inter,system-ui,sans-serif;
+    overflow-x:hidden;
+}
+
+/* Ambient glow */
+
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    width:280px;
+    height:280px;
+    border-radius:50%;
+    filter:blur(100px);
+    pointer-events:none;
+    z-index:-1;
+}
+
+body::before{
+    background:rgba(139,92,246,.10);
+    top:8%;
+    left:-140px;
+}
+
+body::after{
+    background:rgba(6,182,212,.08);
+    right:-140px;
+    bottom:5%;
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar{
+    width:5px;
+}
+
+::-webkit-scrollbar-track{
+    background:#070a14;
+}
+
+::-webkit-scrollbar-thumb{
+    background:linear-gradient(var(--accent),var(--accent2));
+    border-radius:20px;
+}
+
+/* Header */
+
+.top-header{
+    width:100%;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(5,7,17,.72);
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
+    border-bottom:1px solid var(--line);
+}
+
+.header-inner{
+    max-width:1150px;
+    margin:auto;
+    min-height:72px;
+    padding:12px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.brand-logo{
+    width:44px;
+    height:44px;
+    object-fit:contain;
+    border-radius:13px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.12);
+    padding:4px;
+    box-shadow:
+        0 0 25px rgba(139,92,246,.18);
+}
+
+.brand-text{
+    font-family:Orbitron,sans-serif;
+    font-size:15px;
+    font-weight:800;
+    letter-spacing:1.5px;
+}
+
+.brand-text span{
+    color:#a78bfa;
+}
+
+.header-badge{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 14px;
+    border:1px solid rgba(139,92,246,.22);
+    background:rgba(139,92,246,.08);
+    border-radius:50px;
+    color:#b9a7ff;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1px;
+}
+
+.live-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--success);
+    box-shadow:0 0 12px var(--success);
+    animation:pulse 1.8s infinite;
+}
+
+@keyframes pulse{
+    0%,100%{
+        opacity:1;
+        transform:scale(1);
+    }
+    50%{
+        opacity:.45;
+        transform:scale(.7);
+    }
+}
+
+/* Hero */
+
+.hero{
+    max-width:900px;
+    margin:0 auto;
+    padding:58px 20px 25px;
+    text-align:center;
+}
+
+.hero-logo{
+    width:88px;
+    height:88px;
+    object-fit:contain;
+    padding:7px;
+    border-radius:25px;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.045);
+    box-shadow:
+        0 0 0 8px rgba(139,92,246,.035),
+        0 20px 60px rgba(0,0,0,.4),
+        0 0 45px rgba(139,92,246,.16);
+    animation:floatLogo 4s ease-in-out infinite;
+}
+
+@keyframes floatLogo{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-7px)}
+}
+
+.hero h1{
+    margin-top:23px;
+    font-family:Orbitron,sans-serif;
+    font-size:clamp(27px,6vw,48px);
+    font-weight:900;
+    letter-spacing:1px;
+}
+
+.hero h1 .gradient{
+    background:linear-gradient(100deg,#a78bfa,#22d3ee);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    max-width:650px;
+    margin:14px auto 0;
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.8;
+}
+
+/* Main */
+
+.main{
+    width:100%;
+    max-width:620px;
+    margin:auto;
+    padding:15px 16px 50px;
+}
+
+/* Main Card */
+
+.card{
+    position:relative;
+    overflow:hidden;
+    border:1px solid var(--line);
+    border-radius:30px;
+    background:
+        linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.018)),
+        var(--card);
+    backdrop-filter:blur(25px);
+    -webkit-backdrop-filter:blur(25px);
+    box-shadow:
+        0 30px 90px rgba(0,0,0,.45),
+        inset 0 1px rgba(255,255,255,.06);
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    width:300px;
+    height:300px;
+    top:-170px;
+    right:-100px;
+    border-radius:50%;
+    background:rgba(139,92,246,.13);
+    filter:blur(60px);
+    pointer-events:none;
+}
+
+.card-top{
+    position:relative;
+    padding:25px 23px 21px;
+    border-bottom:1px solid var(--line);
+}
+
+.secure-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:7px 13px;
+    border-radius:50px;
+    background:rgba(34,197,94,.07);
+    border:1px solid rgba(34,197,94,.14);
+    color:#6ee7a0;
+    font-size:9px;
+    font-weight:800;
+    letter-spacing:1.5px;
+}
+
+.secure-badge i{
+    font-size:10px;
+}
+
+.card-title{
+    margin-top:17px;
+    font-family:Orbitron,sans-serif;
+    font-size:22px;
+    font-weight:800;
+}
+
+.card-title span{
+    color:#a78bfa;
+}
+
+.card-subtitle{
+    margin-top:8px;
+    color:var(--muted);
+    font-size:11px;
+    line-height:1.6;
+}
+
+.card-subtitle i{
+    color:#22d3ee;
+    margin-right:6px;
+}
+
+/* Body */
+
+.card-body{
+    padding:24px;
+}
+
+/* Label */
+
+.label{
+    display:block;
+    margin-bottom:9px;
+    color:#aab2c4;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:1.3px;
+    text-transform:uppercase;
+}
+
+.label i{
+    color:#a78bfa;
+    margin-right:7px;
+}
+
+/* Input */
+
+.input-wrap{
+    display:flex;
+    align-items:center;
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:17px;
+    overflow:hidden;
+    background:rgba(0,0,0,.18);
+    transition:.3s;
+}
+
+.input-wrap:focus-within{
+    border-color:rgba(139,92,246,.65);
+    box-shadow:
+        0 0 0 4px rgba(139,92,246,.08),
+        0 0 30px rgba(139,92,246,.08);
+}
+
+.country{
+    height:56px;
+    padding:0 16px;
+    display:flex;
+    align-items:center;
+    color:#d8dced;
+    font-size:14px;
+    font-weight:800;
+    border-right:1px solid rgba(255,255,255,.08);
+    background:rgba(255,255,255,.025);
+}
+
+.input-wrap input{
+    width:100%;
+    height:56px;
+    padding:0 17px;
+    border:0;
+    outline:0;
+    background:transparent;
+    color:white;
+    font-size:17px;
+    font-weight:700;
+    letter-spacing:2px;
+    font-family:Inter,sans-serif;
+}
+
+.input-wrap input::placeholder{
+    color:#5f677b;
+    font-size:12px;
+    font-weight:500;
+    letter-spacing:.3px;
+}
+
+/* Status */
+
+.status{
+    min-height:34px;
+    display:flex;
+    align-items:center;
+    gap:9px;
+    color:#727b91;
+    font-size:10px;
+    font-weight:600;
+}
+
+.status-dot{
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:var(--success);
+    box-shadow:0 0 10px rgba(34,197,94,.6);
+}
+
+/* Button */
+
+.search-btn{
+    width:100%;
+    height:56px;
+    border:0;
+    border-radius:17px;
+    cursor:pointer;
+    color:white;
+    background:linear-gradient(110deg,#7c3aed,#6366f1,#0891b2);
+    background-size:200% 100%;
+    font-family:Inter,sans-serif;
+    font-size:13px;
+    font-weight:800;
+    letter-spacing:1.4px;
+    box-shadow:
+        0 12px 35px rgba(99,102,241,.22);
+    transition:.3s;
+    position:relative;
+    overflow:hidden;
+}
+
+.search-btn:hover:not(:disabled){
+    transform:translateY(-2px);
+    background-position:100% 0;
+    box-shadow:
+        0 17px 45px rgba(99,102,241,.32);
+}
+
+.search-btn:active:not(:disabled){
+    transform:scale(.98);
+}
+
+.search-btn:disabled{
+    opacity:.55;
+    cursor:not-allowed;
+}
+
+.search-btn i{
+    margin-right:9px;
+}
+
+/* Error */
+
+.error{
+    display:none;
+    margin:11px 0;
+    padding:12px 14px;
+    border-radius:13px;
+    background:rgba(239,68,68,.07);
+    border:1px solid rgba(239,68,68,.14);
+    color:#fca5a5;
+    font-size:11px;
+    line-height:1.5;
+}
+
+.error.show{
+    display:block;
+}
+
+/* Results */
+
+.results{
+    display:none;
+    margin-top:22px;
+    border:1px solid var(--line);
+    border-radius:20px;
+    overflow:hidden;
+    background:rgba(0,0,0,.13);
+}
+
+.results.show{
+    display:block;
+    animation:resultIn .45s ease;
+}
+
+@keyframes resultIn{
+    from{
+        opacity:0;
+        transform:translateY(12px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.result-head{
+    padding:14px 17px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(255,255,255,.035);
+    border-bottom:1px solid var(--line);
+}
+
+.result-title{
+    color:#e7eaf3;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:1px;
+    text-transform:uppercase;
+}
+
+.result-title i{
+    color:#a78bfa;
+    margin-right:7px;
+}
+
+.count{
+    padding:5px 9px;
+    border-radius:30px;
+    color:#a5b4fc;
+    background:rgba(99,102,241,.10);
+    font-size:9px;
+    font-weight:700;
+}
+
+.result-item{
+    padding:15px 17px;
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    border-bottom:1px solid rgba(255,255,255,.055);
+}
+
+.result-item:last-child{
+    border-bottom:0;
+}
+
+.result-key{
+    color:#737c91;
+    font-size:9px;
+    font-weight:800;
+    letter-spacing:.8px;
+    text-transform:uppercase;
+}
+
+.result-value{
+    max-width:62%;
+    text-align:right;
+    color:#e9ecf5;
+    font-size:12px;
+    font-weight:600;
+    word-break:break-word;
+}
+
+.result-value.accent{
+    color:#c4b5fd;
+}
+
+.result-value.success{
+    color:#86efac;
+}
+
+/* Security */
+
+.security{
+    margin-top:20px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+}
+
+.security-item{
+    padding:12px 7px;
+    text-align:center;
+    border:1px solid var(--line);
+    border-radius:14px;
+    background:rgba(255,255,255,.025);
+}
+
+.security-item i{
+    display:block;
+    margin-bottom:6px;
+    color:#a78bfa;
+    font-size:14px;
+}
+
+.security-item span{
+    color:#7f8799;
+    font-size:8px;
+    font-weight:700;
+    letter-spacing:.4px;
+}
+
+/* Social */
+
+.social{
+    margin-top:15px;
+    padding:18px;
+    border:1px solid var(--line);
+    border-radius:18px;
+    background:rgba(255,255,255,.025);
+    text-align:center;
+}
+
+.social-title{
+    color:#737c91;
+    font-size:9px;
+    font-weight:800;
+    letter-spacing:1.3px;
+    text-transform:uppercase;
+    margin-bottom:13px;
+}
+
+.social-title i{
+    color:#a78bfa;
+    margin-right:6px;
+}
+
+.social-buttons{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+.social-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    padding:9px 13px;
+    border-radius:11px;
+    text-decoration:none;
+    color:#dfe3ee;
+    font-size:9px;
+    font-weight:700;
+    border:1px solid var(--line);
+    background:rgba(255,255,255,.035);
+    transition:.25s;
+}
+
+.social-btn:hover{
+    transform:translateY(-2px);
+    border-color:rgba(139,92,246,.4);
+    background:rgba(139,92,246,.08);
+}
+
+.social-btn i{
+    font-size:13px;
+}
+
+/* JSON */
+
+.json-toggle{
+    width:100%;
+    margin-top:14px;
+    padding:13px;
+    border:1px solid var(--line);
+    border-radius:14px;
+    background:transparent;
+    color:#737c91;
+    cursor:pointer;
+    font-size:9px;
+    font-weight:700;
+    letter-spacing:.8px;
+    transition:.25s;
+}
+
+.json-toggle:hover{
+    color:#c4b5fd;
+    border-color:rgba(139,92,246,.35);
+}
+
+.json-box{
+    display:none;
+    max-height:230px;
+    overflow:auto;
+    margin-top:10px;
+    padding:14px;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:14px;
+    background:#03050b;
+    color:#8ef0c0;
+    font:10px/1.7 "Courier New",monospace;
+    white-space:pre-wrap;
+    word-break:break-all;
+}
+
+.json-box.show{
+    display:block;
+}
+
+/* Footer */
+
+.footer{
+    padding:28px 18px 35px;
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,.06);
+}
+
+.footer-brand{
+    font-family:Orbitron,sans-serif;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:1.5px;
+}
+
+.footer-brand span{
+    color:#a78bfa;
+}
+
+.footer p{
+    margin-top:9px;
+    color:#50586c;
+    font-size:9px;
+    letter-spacing:.6px;
+}
+
+/* Disclaimer */
+
+.overlay{
+    position:fixed;
+    inset:0;
+    z-index:99999;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:18px;
+    background:rgba(2,4,10,.84);
+    backdrop-filter:blur(25px);
+    -webkit-backdrop-filter:blur(25px);
+    transition:.5s;
+}
+
+.overlay.hidden{
+    opacity:0;
+    visibility:hidden;
+}
+
+.disclaimer{
+    width:100%;
+    max-width:440px;
+    padding:34px 25px;
+    text-align:center;
+    border:1px solid rgba(139,92,246,.2);
+    border-radius:28px;
+    background:
+        linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025)),
+        #0a0e1b;
+    box-shadow:0 40px 100px rgba(0,0,0,.65);
+    animation:modalIn .5s ease;
+}
+
+@keyframes modalIn{
+    from{
+        opacity:0;
+        transform:scale(.94) translateY(15px);
+    }
+    to{
+        opacity:1;
+        transform:scale(1) translateY(0);
+    }
+}
+
+.disclaimer-logo{
+    width:70px;
+    height:70px;
+    object-fit:contain;
+    padding:5px;
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.disclaimer h2{
+    margin-top:17px;
+    font-family:Orbitron,sans-serif;
+    font-size:21px;
+}
+
+.disclaimer .line{
+    width:55px;
+    height:2px;
+    margin:12px auto;
+    background:linear-gradient(90deg,#8b5cf6,#22d3ee);
+    border-radius:10px;
+}
+
+.disclaimer p{
+    color:#7e879b;
+    font-size:11px;
+    line-height:1.8;
+}
+
+.disclaimer strong{
+    color:#bbaaff;
+}
+
+.accept{
+    width:100%;
+    margin-top:20px;
+    padding:14px;
+    border:0;
+    border-radius:14px;
+    background:linear-gradient(110deg,#7c3aed,#0891b2);
+    color:white;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1px;
+    cursor:pointer;
+}
+
+/* Mobile */
+
+@media(max-width:520px){
+
+    .header-inner{
+        min-height:64px;
+        padding:10px 14px;
+    }
+
+    .brand-logo{
+        width:38px;
+        height:38px;
+    }
+
+    .brand-text{
+        font-size:12px;
+    }
+
+    .header-badge{
+        padding:7px 9px;
+        font-size:8px;
+    }
+
+    .hero{
+        padding:42px 16px 18px;
+    }
+
+    .hero-logo{
+        width:72px;
+        height:72px;
+    }
+
+    .hero h1{
+        font-size:25px;
+    }
+
+    .hero p{
+        font-size:11px;
+    }
+
+    .main{
+        padding:8px 11px 35px;
+    }
+
+    .card{
+        border-radius:24px;
+    }
+
+    .card-top{
+        padding:21px 18px;
+    }
+
+    .card-body{
+        padding:18px 15px;
+    }
+
+    .card-title{
+        font-size:18px;
+    }
+
+    .security-item span{
+        font-size:7px;
+    }
+
+    .result-item{
+        flex-direction:column;
+        gap:7px;
+    }
+
+    .result-value{
+        max-width:100%;
+        text-align:left;
+    }
+}
+
+@media(prefers-reduced-motion:reduce){
+    *,
+    *::before,
+    *::after{
+        animation-duration:.01ms!important;
+        animation-iteration-count:1!important;
+        scroll-behavior:auto!important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- DISCLAIMER -->
+
+<div class="overlay" id="disclaimerOverlay">
+
+    <div class="disclaimer">
+
+        <img
+            class="disclaimer-logo"
+            src="https://i.ibb.co/QvBBYVRk/84d24370-0c70-44c5-90ef-4e1cc56e25f6.png"
+            alt="SUBHO NET"
+        >
+
+        <h2>SUBHO•NΞT</h2>
+
+        <div class="line"></div>
+
+        <p>
+            This platform is intended for
+            <strong>educational, security-awareness and authorized use</strong>.
+            Please use information responsibly and ethically.
+        </p>
+
+        <button class="accept" onclick="acceptDisclaimer()">
+            <i class="fas fa-check-circle"></i>
+            &nbsp; I UNDERSTAND
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- HEADER -->
+
+<header class="top-header">
+
+    <div class="header-inner">
+
+        <div class="brand">
+
+            <img
+                class="brand-logo"
+                src="https://i.ibb.co/QvBBYVRk/84d24370-0c70-44c5-90ef-4e1cc56e25f6.png"
+                alt="Logo"
+            >
+
+            <div class="brand-text">
+                SUBHO<span>•NΞT</span>
+            </div>
+
+        </div>
+
+        <div class="header-badge">
+            <span class="live-dot"></span>
+            SYSTEM ONLINE
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <img
+        class="hero-logo"
+        src="https://i.ibb.co/QvBBYVRk/84d24370-0c70-44c5-90ef-4e1cc56e25f6.png"
+        alt="SUBHO NET"
+    >
+
+    <h1>
+        <span class="gradient">NUMBER</span>
+        INTELLIGENCE
+    </h1>
+
+    <p>
+        Advanced information interface with a clean,
+        secure and modern intelligence dashboard.
+    </p>
+
+</section>
+
+
+<!-- MAIN -->
+
+<main class="main">
+
+    <section class="card">
+
+        <!-- Card Top -->
+
+        <div class="card-top">
+
+            <div class="secure-badge">
+                <i class="fas fa-shield-halved"></i>
+                SECURE SYSTEM
+            </div>
+
+            <div class="card-title">
+                PHONE <span>SEARCH</span>
+            </div>
+
+            <div class="card-subtitle">
+                <i class="fas fa-circle-check"></i>
+                Enter an authorized 10-digit mobile number
+            </div>
+
+        </div>
+
+
+        <!-- Card Body -->
+
+        <div class="card-body">
+
+            <form id="trackForm">
+
+                <label class="label">
+                    <i class="fas fa-mobile-screen"></i>
+                    Mobile Number
+                </label>
+
+                <div class="input-wrap">
+
+                    <span class="country">+91</span>
+
+                    <input
+                        type="tel"
+                        id="phoneInput"
+                        maxlength="10"
+                        inputmode="numeric"
+                        autocomplete="off"
+                        placeholder="Enter 10-digit number"
+                    >
+
+                </div>
+
+
+                <div class="status">
+
+                    <span class="status-dot" id="statusDot"></span>
+
+                    <span id="statusText">
+                        Ready to search
+                    </span>
+
+                </div>
+
+
+                <div class="error" id="errorText"></div>
+
+
+                <button
+                    class="search-btn"
+                    id="trackBtn"
+                    type="submit"
+                >
+                    <i class="fas fa-magnifying-glass"></i>
+                    GET INFORMATION
+                </button>
+
+            </form>
+
+
+            <!-- RESULTS -->
+
+            <div class="results" id="resultBox">
+
+                <div class="result-head">
+
+                    <div class="result-title">
+                        <i class="fas fa-database"></i>
+                        Authorized Result
+                    </div>
+
+                    <div class="count">
+                        <span id="recordCount">0</span>
+                        RECORD
+                    </div>
+
+                </div>
+
+                <div id="resultContent"></div>
+
+            </div>
+
+
+            <!-- SECURITY -->
+
+            <div class="security">
+
+                <div class="security-item">
+                    <i class="fas fa-lock"></i>
+                    <span>SECURE</span>
+                </div>
+
+                <div class="security-item">
+                    <i class="fas fa-shield-halved"></i>
+                    <span>PROTECTED</span>
+                </div>
+
+                <div class="security-item">
+                    <i class="fas fa-bolt"></i>
+                    <span>FAST API</span>
+                </div>
+
+            </div>
+
+
+            <!-- SOCIAL -->
+
+            <div class="social">
+
+                <div class="social-title">
+                    <i class="fas fa-share-nodes"></i>
+                    Connect With SUBHO•NΞT
+                </div>
+
+                <div class="social-buttons">
+
+                    <a
+                        href="https://youtube.com/@statuskingsubho"
+                        target="_blank"
+                        class="social-btn"
+                    >
+                        <i class="fab fa-youtube"></i>
+                        YouTube
+                    </a>
+
+                    <a
+                        href="https://www.instagram.com/y_o_u_r__s_u_b_h_o/"
+                        target="_blank"
+                        class="social-btn"
+                    >
+                        <i class="fab fa-instagram"></i>
+                        Instagram
+                    </a>
+
+                    <a
+                        href="https://t.me/Subhodip52"
+                        target="_blank"
+                        class="social-btn"
+                    >
+                        <i class="fab fa-telegram-plane"></i>
+                        Telegram
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- JSON -->
+
+            <button
+                class="json-toggle"
+                id="jsonToggle"
+                type="button"
+            >
+                <i class="fas fa-code"></i>
+                &nbsp; VIEW RAW API RESPONSE
+            </button>
+
+            <div class="json-box" id="jsonBox"></div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+    <div class="footer-brand">
+        SUBHO<span>•NΞT</span>
+    </div>
+
+    <p>
+        PREMIUM INTELLIGENCE INTERFACE · ALL RIGHTS RESERVED
+    </p>
+
+</footer>
+
+
+<script>
+
+/* ================================
+   DISCLAIMER
+================================ */
+
+(function(){
+
+    try{
+
+        if(sessionStorage.getItem("disclaimerShown")==="true"){
+
+            document
+                .getElementById("disclaimerOverlay")
+                .classList.add("hidden");
+
+        }
+
+    }catch(e){}
+
+})();
+
+
+function acceptDisclaimer(){
+
+    try{
+        sessionStorage.setItem("disclaimerShown","true");
+    }catch(e){}
+
+    document
+        .getElementById("disclaimerOverlay")
+        .classList.add("hidden");
+
+}
+
+
+/* ================================
+   API
+   Existing endpoint preserved
+================================ */
+
+async function callAPI(number){
+
+    try{
+
+        const response = await fetch("/index.php",{
+
+            method:"POST",
+
+            headers:{
+                "Content-Type":"application/json",
+                "X-Requested-With":"XMLHttpRequest"
+            },
+
+            body:JSON.stringify({
+                number:number
+            })
+
+        });
+
+
+        if(!response.ok){
+
+            throw new Error(
+                "HTTP Error: "+response.status
+            );
+
+        }
+
+
+        const data = await response.json();
+
+        console.log("API Response:",data);
+
+        return data;
+
+    }catch(error){
+
+        console.error("API Error:",error);
+
+        return{
+            status:"error",
+            message:error.message
+        };
+
+    }
+
+}
+
+
+/* ================================
+   SAFE RESULT DISPLAY
+================================ */
+
+function displayResults(data){
+
+    const resultBox =
+        document.getElementById("resultBox");
+
+    const resultContent =
+        document.getElementById("resultContent");
+
+    const recordCount =
+        document.getElementById("recordCount");
+
+    const jsonBox =
+        document.getElementById("jsonBox");
+
+
+    jsonBox.textContent =
+        JSON.stringify(data,null,2);
+
+
+    if(data.status==="error"){
+
+        resultBox.classList.remove("show");
+
+        showError(
+            data.message || "API request failed."
+        );
+
+        return;
+
+    }
+
+
+    let results=[];
+
+    if(Array.isArray(data.result)){
+        results=data.result;
+    }
+
+
+    recordCount.textContent=results.length;
+
+
+    if(!results.length){
+
+        resultBox.classList.remove("show");
+
+        showError("No authorized result found.");
+
+        return;
+
+    }
+
+
+    let html="";
+
+
+    results.forEach(function(info){
+
+        if(!info || typeof info!=="object"){
+            return;
+        }
+
+
+        /*
+         * Only non-sensitive / operational fields
+         * are displayed here.
+         */
+
+        const safeFields=[
+            ["status","Status","success"],
+            ["source","Source",""],
+            ["count","Record Count","accent"],
+            ["poweredBy","Powered By","accent"]
+        ];
+
+
+        safeFields.forEach(function(field){
+
+            const key=field[0];
+            const label=field[1];
+            const style=field[2];
+
+            if(
+                Object.prototype.hasOwnProperty.call(info,key) &&
+                info[key] !== null &&
+                info[key] !== "" &&
+                info[key] !== "null"
+            ){
+
+                html += `
+                    <div class="result-item">
+
+                        <div class="result-key">
+                            ${escapeHTML(label)}
+                        </div>
+
+                        <div class="result-value ${style}">
+                            ${escapeHTML(String(info[key]))}
+                        </div>
+
+                    </div>
+                `;
+
+            }
+
+        });
+
+    });
+
+
+    if(!html){
+
+        html=`
+            <div class="result-item">
+
+                <div class="result-key">
+                    Response
+                </div>
+
+                <div class="result-value">
+                    API response received successfully.
+                </div>
+
+            </div>
+        `;
+
+    }
+
+
+    resultContent.innerHTML=html;
+
+    resultBox.classList.add("show");
+
+    document
+        .getElementById("errorText")
+        .classList.remove("show");
+
+}
+
+
+/* ================================
+   SEARCH
+================================ */
+
+async function searchNumber(){
+
+    const input =
+        document.getElementById("phoneInput");
+
+    const number =
+        input.value.trim();
+
+    const btn =
+        document.getElementById("trackBtn");
+
+    const statusText =
+        document.getElementById("statusText");
+
+    const statusDot =
+        document.getElementById("statusDot");
+
+
+    if(!/^[0-9]{10}$/.test(number)){
+
+        showError(
+            "Please enter a valid 10-digit mobile number."
+        );
+
+        return;
+
+    }
+
+
+    hideError();
+
+
+    btn.disabled=true;
+
+    btn.innerHTML=
+        '<i class="fas fa-spinner fa-spin"></i> SEARCHING...';
+
+
+    statusText.textContent=
+        "Connecting to API...";
+
+    statusDot.style.background="#a78bfa";
+
+    statusDot.style.boxShadow=
+        "0 0 10px rgba(167,139,250,.7)";
+
+
+    document
+        .getElementById("resultBox")
+        .classList.remove("show");
+
+
+    try{
+
+        const data=await callAPI(number);
+
+        displayResults(data);
+
+
+        if(data.status==="success"){
+
+            statusText.textContent=
+                "Search completed successfully.";
+
+            statusDot.style.background="#22c55e";
+
+            statusDot.style.boxShadow=
+                "0 0 10px rgba(34,197,94,.7)";
+
+        }else{
+
+            statusText.textContent=
+                "API returned an error.";
+
+            statusDot.style.background="#ef4444";
+
+            statusDot.style.boxShadow=
+                "0 0 10px rgba(239,68,68,.7)";
+
+        }
+
+
+    }catch(error){
+
+        console.error(error);
+
+        statusText.textContent=
+            "Connection error.";
+
+        statusDot.style.background="#ef4444";
+
+        statusDot.style.boxShadow=
+            "0 0 10px rgba(239,68,68,.7)";
+
+        showError(
+            "Unable to connect to the API."
+        );
+
+    }
+
+
+    btn.disabled=false;
+
+    btn.innerHTML=
+        '<i class="fas fa-magnifying-glass"></i> GET INFORMATION';
+
+}
+
+
+/* ================================
+   ERROR
+================================ */
+
+function showError(message){
+
+    const error=
+        document.getElementById("errorText");
+
+    error.textContent="⚠️ "+message;
+
+    error.classList.add("show");
+
+}
+
+
+function hideError(){
+
+    document
+        .getElementById("errorText")
+        .classList.remove("show");
+
+}
+
+
+/* ================================
+   JSON TOGGLE
+================================ */
+
+document
+    .getElementById("jsonToggle")
+    .addEventListener("click",function(){
+
+        const box=
+            document.getElementById("jsonBox");
+
+        box.classList.toggle("show");
+
+        this.innerHTML=
+            box.classList.contains("show")
+            ?
+            '<i class="fas fa-code"></i> HIDE RAW API RESPONSE'
+            :
+            '<i class="fas fa-code"></i> VIEW RAW API RESPONSE';
+
+    });
+
+
+/* ================================
+   FORM
+================================ */
+
+document
+    .getElementById("trackForm")
+    .addEventListener("submit",function(e){
+
+        e.preventDefault();
+
+        searchNumber();
+
+    });
+
+
+/* ================================
+   INPUT
+================================ */
+
+document
+    .getElementById("phoneInput")
+    .addEventListener("input",function(){
+
+        this.value=
+            this.value.replace(/[^0-9]/g,"");
+
+    });
+
+
+/* ================================
+   ESCAPE HTML
+================================ */
+
+function escapeHTML(value){
+
+    return value
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* ================================
+   BASIC IMAGE DRAG PREVENTION
+================================ */
+
+document
+    .querySelectorAll("img")
+    .forEach(function(img){
+
+        img.addEventListener("dragstart",
+            function(e){
+                e.preventDefault();
+            }
+        );
+
+    });
+
+
+console.log(
+    "SUBHO•NΞT · Premium Intelligence Interface"
+);
+
+</script>
+
+</body>
+</html>
